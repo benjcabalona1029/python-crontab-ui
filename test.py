@@ -18,7 +18,7 @@ def test_cron():
 # import sqlite3
 # import pandas as pd
 
-# con = sqlite3.connect("/Users/bcabalona/Documents/python-crontab-ui/jobs.db")
+# con = sqlite3.connect("jobs.db")
 # df = pd.read_sql("SELECT * FROM jobs", con)
 # print(df)
 
