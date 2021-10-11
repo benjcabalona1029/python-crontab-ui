@@ -1,8 +1,0 @@
-fastapi~=0.68.1
-uvicorn
-jinja2
-aiofiles
-sqlalchemy~=1.4.25
-python-crontab~=2.5.1
-croniter~=1.0.15
-pydantic~=1.8.2
