@@ -110,4 +110,4 @@ async def delete_job(job_id: int, db: Session = Depends(get_db)):
     db.delete(job_update)
     db.commit()
 
-    return {"INFO": f"Deleted {job_id} Succesfully"}
+    return {"INFO": f"Deleted {job_id} Successfully"}

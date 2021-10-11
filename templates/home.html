@@ -1,159 +1,147 @@
-{% extends "layout.html" %} {% block content %}
-<script>
-  $(document).ready(function () {
-    $("#add_job").click(function () {
-      $(".ui.modal").modal("show");
-    });
+{% extends "layout.html" %}
 
-    $(".ui.red.inverted.button").click(function () {
-      if (confirm("Are you sure you want delete this job?")) {
-        const id = $(this).val();
-        $.ajax({
-          url: `job/${id}/`,
-          type: "DELETE",
-          contentType: "application/json",
+{% block content %}
+    <script>
+        $(document).ready(function () {
+            $("#add_job").click(function () {
+                $('.ui.modal').modal('show');
+            });
+
+            $(".ui.inverted.red.button").click(function () {
+                if (confirm('Are you sure you want delete this job?')) {
+                    const id = $(this).val();
+                    $.ajax({
+                        url: `job/${id}/`,
+                        type: 'DELETE',
+                        contentType: 'application/json',
+                    });
+                    alert("Job Deleted!. Please Reload")
+                }
+               
+
+            });
+
+            $(".ui.grey.basic.button").click(function () {
+                if (confirm('Are you sure you want run this job?')) {
+                    const id = $(this).val();
+                    $.ajax({
+                        url: `/run_job/${id}/`,
+                        type: 'GET',
+                        contentType: 'application/json',
+                    });
+
+                    alert("Job is executed")
+                }
+
+            });
+
+            $("#save").click(function () {
+
+                const command = $("#command").val();
+                const command_name = $("#command_name").val();
+                const schedule = $("#schedule").val();
+
+                if (command === "" || command_name === "" || schedule === "") {
+                    alert("You must fill out all fields")
+                } else {
+                    $.ajax({
+                        url: '/create_job/',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            "command": command,
+                            "name": command_name,
+                            "schedule": schedule
+                        }),
+                        dataType: 'json',
+                    });
+
+                }
+
+                $('.ui.modal').modal('hide');
+                alert("Job Created!. Please Reload")
+            });
         });
-      }
-    });
 
-    $(".ui.grey.basic.button").click(function () {
-      if (confirm("Are you sure you want run this job?")) {
-        const id = $(this).val();
-        $.ajax({
-          url: `/run_job/${id}/`,
-          type: "GET",
-          contentType: "application/json",
-        });
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
 
-        alert("Job is executed");
-      }
-    });
 
-    $("#save").click(function () {
-      const command = $("#command").val();
-      const command_name = $("#command_name").val();
-      const schedule = $("#schedule").val();
+    </script>
 
-      if (command === "" || command_name === "" || schedule === "") {
-        alert("You must fill out all fields");
-      } else {
-        $.ajax({
-          url: "/create_job/",
-          type: "POST",
-          contentType: "application/json",
-          data: JSON.stringify({
-            command: command,
-            name: command_name,
-            schedule: schedule,
-          }),
-          dataType: "json",
-        });
-      }
+    <section id="features">
+        <table class="ui grey table">
+            <caption></caption>
+            <thead>
+            <tr>
+                <th scope="col">Command</th>
+                <th scope="col">Command Name</th>
+                <th scope="col">Schedule</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            {% for job in jobs %}
+                <tr>
+                    <td>
+                        <pre><code class="bash">{{ job.command }}</code></pre>
+                    </td>
+                    <td>
+                        <pre>{{ job.name }}</pre>
+                    </td>
+                    <td>
+                        <pre><code class="bash">{{ job.schedule }}</code></pre>
+                    </td>
+                    <td>
+                        <button type="button" class="ui grey basic button" value={{ job.id }}><i
+                                class="play icon"></i>
+                        </button>
+                        <a href="/jobs/{{ job.id }}" class="btn btn-primary">
+                            <button type="button"
+                                    class="ui inverted primary button">Update
+                                Job
+                            </button>
+                        </a>
+                        <button id="delete" type="button" class="ui inverted red button" value={{ job.id }}>Delete Job
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <p>
+            <button id="add_job" class="ui inverted green button">Add Job</button>
+        </p>
+    </section>
 
-      $(".ui.modal").modal("hide");
-      alert("Job Created!. Please Reload");
-    });
-  });
 
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-</script>
 
-<section id="features">
-  <table class="ui celled padded table">
-    <caption></caption>
-    <thead>
-      <tr>
-        <th scope="col">Command</th>
-        <th scope="col">Command Name</th>
-        <th scope="col">Schedule</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    {% for job in jobs %}
-    <tr>
-      <td>
-        <pre><code class="bash">{{ job.command }}</code></pre>
-      </td>
-      <td>
-        <pre>{{ job.name }}</pre>
-      </td>
-      <td>
-        <pre><code class="bash">{{ job.schedule }}</code></pre>
-      </td>
-      <td>
-        <button type="button" class="ui grey basic button" value="{{" job.id }}>
-          <i class="play icon"></i>
-        </button>
-      </td>
-      <td>
-        <a href="/jobs/{{ job.id }}" class="btn btn-primary">
-          <button type="button" class="ui inverted primary button">
-            Update
-          </button>
-        </a>
-      </td>
-      <td>
-        <button
-          id="delete"
-          type="button"
-          class="ui inverted red button"
-          value="{{"
-          job.id
-          }}
-        >
-          Delete
-        </button>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
-  <p>
-    <button id="add_job" class="ui inverted green button">Add Job</button>
-  </p>
-</section>
 
-<div class="ui modal">
-  <em class="close icon"></em>
-  <div class="header">Add Job</div>
-  <div class="content">
-    <form class="ui form" onsubmit="">
-      <div class="field">
-        <label>Command</label>
-        <label for="command"></label
-        ><input
-          type="text"
-          name="command"
-          placeholder="echo Hello World"
-          id="command"
-          required
-        />
-      </div>
-      <div class="field">
-        <label>Command Name</label>
-        <label for="command_name"></label
-        ><input
-          type="text"
-          name="command_name"
-          placeholder="Command Name"
-          id="command_name"
-        />
-      </div>
-      <div class="field">
-        <label>Schedule</label>
-        <label for="schedule"></label
-        ><input
-          type="text"
-          name="schedule"
-          placeholder="* * * * *"
-          id="schedule"
-        />
-      </div>
-      <button id="save" class="ui blue button">Submit</button>
-    </form>
-  </div>
-</div>
+    <div class="ui modal">
+        <em class="close icon"></em>
+        <div class="header">
+            Add Job
+        </div>
+        <div class="content">
+            <form class="ui form" onsubmit="">
+                <div class="field">
+                    <label>Command</label>
+                    <label for="command"></label><input type="text" name="command" placeholder="echo Hello World"
+                                                        id="command" required>
+                </div>
+                <div class="field">
+                    <label>Command Name</label>
+                    <label for="command_name"></label><input type="text" name="command_name" placeholder="Command Name"
+                                                             id="command_name">
+                </div>
+                <div class="field">
+                    <label>Schedule</label>
+                    <label for="schedule"></label><input type="text" name="schedule" placeholder="* * * * *"
+                                                         id="schedule">
+                </div>
+                <button id="save" class="ui blue button">Submit</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
+
+
