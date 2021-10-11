@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+    <script>
+
+        $(document).ready(function () {
+            $("#save").click(function () {
+                const id = $(this).val();
+                const command = $("#command").val();
+                const command_name = $("#command_name").val();
+                const schedule = $("#schedule").val();
+
+                if (command === "" || command_name === "" || schedule === "") {
+                    alert("You must fill out all fields")
+                } else {
+                    $.ajax({
+                        url: `/update_job/${id}/`,
+                        type: 'PUT',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            "command": command,
+                            "name": command_name,
+                            "schedule": schedule
+                        }),
+                        dataType: 'json'
+                    });
+			alert("Job Updated")
+
+                }
+
+            });
+        });
+    </script>
+
+
+    <form class="ui form" onsubmit="">
+        <div class="field">
+            <label>Command</label>
+            <label for="command"></label><input type="text" name="command" id="command"
+                                                value="{{ job_update.command }}">
+        </div>
+        <div class="field">
+            <label>Command Name</label>
+            <label for="command_name"></label><input type="text" name="command_name" id="command_name"
+                                                     value="{{ job_update.name }}">
+        </div>
+        <div class="field">
+            <label>Schedule</label>
+            <label for="schedule"></label><input type="text" name="schedule" id="schedule"
+                                                 value="{{ job_update.schedule }}">
+        </div>
+        <a href="/" class="btn btn-primary">
+            <button type="button" class="ui blue button" value={{ job_update.id }}
+                    id="save">Update
+                Job
+            </button>
+        </a>
+    </form>
+
+{% endblock %}
