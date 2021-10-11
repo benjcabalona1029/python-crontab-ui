@@ -10,7 +10,7 @@ _cron = CronTab(user=_user)
 
 def _add_log_file(command: str, name: str) -> str:
     log_file_name = name.replace(" ", "")
-    return f"{command} >> {log_file_name}.log 2>&1"
+    return f"{command} >> ~/{log_file_name}.log 2>&1"
 
 
 def add_cron_job(comm, name, sched):
