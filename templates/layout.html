@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python Crontab WEB UI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    <!-- Code Highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="https://semantic-ui.com/javascript/library/highlight.min.js"></script>
+</head>
+<body>
+
+<div class="ui inverted segment">
+    <div class="ui inverted secondary menu">
+        <a class="active item" href="/">
+            Python Crontab UI
+        </a>
+        <a class="item" href="/">
+            <img src="{{ url_for('static', path='lcs.png') }}" alt="" width="30" height="30">
+        </a>
+    </div>
+</div>
+
+
+<div class="ui container">
+    <br>
+    <br>
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+</body>
+</html>

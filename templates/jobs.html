@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <script type="module" src="{{ url_for('static', path='main.js') }}"></script>
+
+    <form class="ui form" onsubmit="">
+        <div class="field">
+            <label>Command</label>
+            <label for="command"></label><input type="text" name="command" id="command"
+                                                value="{{ job_update.command }}">
+        </div>
+        <div class="field">
+            <label>Command Name</label>
+            <label for="command_name"></label><input type="text" name="command_name" id="command_name"
+                                                     value="{{ job_update.name }}">
+        </div>
+        <div class="field">
+            <label>Schedule</label>
+            <label for="schedule"></label><input type="text" name="schedule" id="schedule"
+                                                 value="{{ job_update.schedule }}">
+        </div>
+        <a href="/" class="btn btn-primary">
+            <button type="button" class="ui blue button" value={{ job_update.id }}
+                    id="update">Update
+                Job
+            </button>
+        </a>
+    </form>
+
+{% endblock %}
