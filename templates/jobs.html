@@ -2,38 +2,7 @@
 
 {% block content %}
 
-
-    <script>
-
-        $(document).ready(function () {
-            $("#save").click(function () {
-                const id = $(this).val();
-                const command = $("#command").val();
-                const command_name = $("#command_name").val();
-                const schedule = $("#schedule").val();
-
-                if (command === "" || command_name === "" || schedule === "") {
-                    alert("You must fill out all fields")
-                } else {
-                    $.ajax({
-                        url: `/update_job/${id}/`,
-                        type: 'PUT',
-                        contentType: 'application/json',
-                        data: JSON.stringify({
-                            "command": command,
-                            "name": command_name,
-                            "schedule": schedule
-                        }),
-                        dataType: 'json'
-                    });
-			alert("Job Updated")
-
-                }
-
-            });
-        });
-    </script>
-
+    <script type="module" src="{{ url_for('static', path='main.js') }}"></script>
 
     <form class="ui form" onsubmit="">
         <div class="field">
@@ -53,7 +22,7 @@
         </div>
         <a href="/" class="btn btn-primary">
             <button type="button" class="ui blue button" value={{ job_update.id }}
-                    id="save">Update
+                    id="update">Update
                 Job
             </button>
         </a>
