@@ -9,6 +9,7 @@ This project aims to simplify managing cron jobs. Common issues that with cron a
 
 - Adding, Updating, Deleting and running cron jobs is simple.
 - It automatically logs the output of your cron jobs.
+- Displays when is the next scheduled run.
 - Validates if your schedule is a valid cron schedule.
 
 ## TODO:
