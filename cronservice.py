@@ -1,19 +1,23 @@
 from crontab import CronTab
 from croniter import croniter
+from datetime import datetime
 import getpass
 
 _user = getpass.getuser()
 
-
 _cron = CronTab(user=_user)
 
+Command = str
+Name = str
+Schedule = str
 
-def _add_log_file(command: str, name: str) -> str:
+
+def _add_log_file(command: Command, name: Name) -> str:
     log_file_name = name.replace(" ", "")
     return f"{command} >> ~/{log_file_name}.log 2>&1"
 
 
-def add_cron_job(comm, name, sched):
+def add_cron_job(comm: Command, name: Name, sched: Schedule) -> None:
     if croniter.is_valid(sched):
         job = _cron.new(command=_add_log_file(comm, name), comment=name)
         job.setall(sched)
@@ -22,7 +26,7 @@ def add_cron_job(comm, name, sched):
         raise ValueError("Invalid Cron Expression")
 
 
-def update_cron_job(comm, name, sched, old_name):
+def update_cron_job(comm: Command, name: Name, sched: Schedule, old_name: Name) -> None:
     match = _cron.find_comment(old_name)
     job = list(match)[0]
     job.setall(sched)
@@ -31,13 +35,20 @@ def update_cron_job(comm, name, sched, old_name):
     _cron.write()
 
 
-def delete_cron_job(name):
+def delete_cron_job(name: Name) -> None:
     _cron.remove_all(comment=name)
     _cron.write()
 
 
-def run_manually(name):
+def run_manually(name: Name) -> None:
     match = _cron.find_comment(name)
     job = list(match)[0]
     job.run()
     print(job, "executed")
+
+
+def get_next_schedule(name: Name) -> str:
+    match = _cron.find_comment(name)
+    job = list(match)[0]
+    schedule = job.schedule(date_from=datetime.now())
+    return schedule.get_next().strftime("%d/%m/%Y %H:%M:%S").replace("/", "-")

@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<script type="module" src="{{ url_for('static', path='main.js') }}"></script>
+    <script type="module" src="{{ url_for('static', path='main.js') }}"></script>
 
     <section id="features">
         <table class="ui grey table">
@@ -11,13 +11,17 @@
                 <th scope="col">Command</th>
                 <th scope="col">Command Name</th>
                 <th scope="col">Schedule</th>
+                <th scope="col">Next Run</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
             {% for job in jobs %}
                 <tr>
                     <td>
-                        <pre><code class="bash">{{ job.command }}</code></pre>
+                        <div class="ui custom button">Show Command</div>
+                        <div class="ui fluid popup bottom left transition hidden">
+                            <pre><code class="bash">{{ job.command }}</code></pre>
+                        </div>
                     </td>
                     <td>
                         <pre>{{ job.name }}</pre>
@@ -26,17 +30,22 @@
                         <pre><code class="bash">{{ job.schedule }}</code></pre>
                     </td>
                     <td>
+                        <pre><code class="bash">{{ job.next_run }}</code></pre>
+                    </td>
+                    <td>
                         <button type="button" class="ui grey basic button" value={{ job.id }}><i
                                 class="play icon"></i>
                         </button>
                         <a href="/jobs/{{ job.id }}" class="btn btn-primary">
                             <button type="button"
                                     class="ui inverted primary button">Update
-                                Job
                             </button>
                         </a>
-                        <button id="delete" type="button" class="ui inverted red button" value={{ job.id }}>Delete Job
-                        </button>
+                        <a href="/">
+                            <button id="delete" type="button" class="ui inverted red button" value={{ job.id }}>Delete
+                            </button>
+                        </a>
+
                     </td>
                 </tr>
             {% endfor %}
@@ -76,5 +85,3 @@
         </div>
     </div>
 {% endblock %}
-
-
