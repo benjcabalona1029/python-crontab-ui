@@ -18,7 +18,10 @@
             {% for job in jobs %}
                 <tr>
                     <td>
-                        <pre><code class="bash">{{ job.command }}</code></pre>
+                        <div class="ui custom button">Show Command</div>
+                        <div class="ui fluid popup bottom left transition hidden">
+                            <pre><code class="bash">{{ job.command }}</code></pre>
+                        </div>
                     </td>
                     <td>
                         <pre>{{ job.name }}</pre>
