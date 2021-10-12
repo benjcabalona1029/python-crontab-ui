@@ -83,4 +83,11 @@ $(document).ready(function () {
         }
 
     });
+
+    $('.custom.button')
+        .popup({
+            popup: $('.custom.popup'),
+            on: 'click',
+            inline: true
+        });
 });
