@@ -12,6 +12,7 @@
                 <th scope="col">Command Name</th>
                 <th scope="col">Schedule</th>
                 <th scope="col">Next Run</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
@@ -33,9 +34,14 @@
                         <pre><code class="bash">{{ job.next_run }}</code></pre>
                     </td>
                     <td>
-                        <button type="button" class="ui grey basic button" value={{ job.id }}><i
-                                class="play icon"></i>
-                        </button>
+                        <pre><code class="bash">{{ job.status }}</code></pre>
+                    </td>
+                    <td>
+                        <a href="/">
+                            <button type="button" class="ui grey basic button" value={{ job.id }}><i
+                                    class="play icon"></i>
+                            </button>
+                        </a>
                         <a href="/jobs/{{ job.id }}" class="btn btn-primary">
                             <button type="button"
                                     class="ui inverted primary button">Update

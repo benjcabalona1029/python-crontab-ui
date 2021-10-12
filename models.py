@@ -11,4 +11,5 @@ class Job(Base):
     name = Column(String, unique=True)
     schedule = Column(String)
     next_run = Column(String, default=None)
+    status = Column(String, default=None)
     is_active = Column(Boolean, default=False)

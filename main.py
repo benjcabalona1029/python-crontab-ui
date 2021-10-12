@@ -27,6 +27,7 @@ def update_displayed_schedule(db: Session = Depends(get_db)) -> None:
     jobs = db.query(Job).all()
     for job in jobs:
         job.next_run = cronservice.get_next_schedule(job.name)
+        job.status = cronservice.watch_files(job.name)
 
 
 @app.get("/")
