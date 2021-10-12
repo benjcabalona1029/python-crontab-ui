@@ -43,11 +43,7 @@ async def home(request: Request, db: Session = Depends(get_db)):
 
 
 @app.get("/jobs/{job_id}")
-async def get_jobs(
-        job_id: int,
-        request: Request,
-        db: Session = Depends(get_db),
-):
+async def get_jobs(job_id: int, request: Request, db: Session = Depends(get_db)):
     job_update = db.query(Job).filter(Job.id == job_id).first()
 
     output = {"request": request, "job_update": job_update}
@@ -74,9 +70,7 @@ async def create_job(job_request: JobRequest, db: Session = Depends(get_db)):
 
 @app.put("/update_job/{job_id}/")
 async def update_job(
-        job_id: int,
-        job_request: JobRequest,
-        db: Session = Depends(get_db),
+    job_id: int, job_request: JobRequest, db: Session = Depends(get_db)
 ):
     existing_job = db.query(Job).filter(Job.id == job_id)
     update_cron_job(
@@ -91,10 +85,7 @@ async def update_job(
 
 
 @app.get("/run_job/{job_id}/")
-async def run_job(
-        job_id: int,
-        db: Session = Depends(get_db),
-):
+async def run_job(job_id: int, db: Session = Depends(get_db)):
     chosen_job = db.query(Job).filter(Job.id == job_id).first()
     chosen_name = chosen_job.name
     run_manually(chosen_name)
