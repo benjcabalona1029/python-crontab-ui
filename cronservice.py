@@ -1,5 +1,6 @@
 from crontab import CronTab
 from croniter import croniter
+from datetime import datetime
 import getpass
 
 _user = getpass.getuser()
@@ -44,3 +45,10 @@ def run_manually(name: Name) -> None:
     job = list(match)[0]
     job.run()
     print(job, "executed")
+
+
+def get_next_schedule(name: Name) -> str:
+    match = _cron.find_comment(name)
+    job = list(match)[0]
+    schedule = job.schedule(date_from=datetime.now())
+    return schedule.get_next().strftime("%d/%m/%Y %H:%M:%S").replace("/", "-")
