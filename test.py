@@ -1,6 +1,7 @@
 from crontab import CronTab
 from croniter import croniter
 import getpass
+import pathlib
 from datetime import datetime
 
 
@@ -16,5 +17,13 @@ def test_cron():
     print(schedule.get_next())
 
 
+def watch_files():
+    p = pathlib.Path().home()
+    path = f"{p}/error_faulty.err"
+    with open(path) as f:
+        data = f.read()
+        print(data)
+
+
 if __name__ == "__main__":
-    test_cron()
+    watch_files()

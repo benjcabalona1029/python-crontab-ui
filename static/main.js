@@ -90,4 +90,5 @@ $(document).ready(function () {
             on: 'click',
             inline: true
         });
+
 });
