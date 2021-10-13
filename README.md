@@ -40,6 +40,8 @@ cd python-crontab-ui-git
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+# moreutils is needed for a timestamp to be added in the logs
+sudo pip install moreutils
 uvicorn main:app
 ```
 # Notes
