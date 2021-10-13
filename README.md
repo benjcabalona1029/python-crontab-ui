@@ -36,5 +36,5 @@ uvicorn main:app
 
 # TODO:
 
-- Improve the UI. I'm not really good at HTML/CSS/JS. I mean, it is useable but it could be better.
+- Improve the UI. I'm not really good at HTML/CSS/JS. I mean, it is usable but it could be better.
 - Currently, adding incorrect cron schedule fails silently (in the UI but not in the API) so if you entered an invalid cron schedule, it will simply not add/update the job.
