@@ -1,6 +1,11 @@
 # Python Crontab UI
+
+![](https://img.shields.io/github/license/benjcabalona1029/python-crontab-ui?style=for-the-badge)
+
 *Sponsored by: https://www.facebook.com/lacantinasueno/*
+
 ![](static/lcs.png)
+
 
 This project aims to simplify managing cron jobs. Common issues that we encounter in cron are:
 
@@ -17,8 +22,6 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 
 # Demo
 
-A full video tutorial can be found here:
-
 ## Executing a succesful command
 
 ![](readme_images/success.gif)
@@ -26,10 +29,6 @@ A full video tutorial can be found here:
 ## Updating a job and running a failed command
 
 ![](readme_images/failed.gif)
-
-## *Scheduling a Jupyter Notebook*
-
-Refer to this video:
 
 # Quickstart
 
