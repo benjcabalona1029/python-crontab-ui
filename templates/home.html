@@ -14,13 +14,14 @@
                 <th scope="col">Next Run</th>
                 <th scope="col">Status</th>
                 <th scope="col">Action</th>
+                <th scope="col">Logs</th>
             </tr>
             </thead>
             {% for job in jobs %}
                 <tr>
                     <td>
                         <div class="ui custom button">Show Command</div>
-                        <div class="ui fluid popup bottom left transition hidden">
+                        <div class="ui custom popup">
                             <pre><code class="bash">{{ job.command }}</code></pre>
                         </div>
                     </td>
@@ -51,7 +52,13 @@
                             <button id="delete" type="button" class="ui inverted red button" value={{ job.id }}>Delete
                             </button>
                         </a>
-
+                    </td>
+                    <td>
+                        <a href="/logs/{{ job.id }}" class="btn btn-primary">
+                            <button type="button"
+                                    class="ui blue button">Logs
+                            </button>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
