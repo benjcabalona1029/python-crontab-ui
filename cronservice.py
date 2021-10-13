@@ -3,23 +3,16 @@ from croniter import croniter
 from datetime import datetime
 import getpass
 
+from utils import add_log_file, Command, Name, Schedule
+
 _user = getpass.getuser()
 
 _cron = CronTab(user=_user)
 
-Command = str
-Name = str
-Schedule = str
-
-
-def _add_log_file(command: Command, name: Name) -> str:
-    log_file_name = name.replace(" ", "")
-    return f"{command} >> ~/{log_file_name}.log 2>&1"
-
 
 def add_cron_job(comm: Command, name: Name, sched: Schedule) -> None:
     if croniter.is_valid(sched):
-        job = _cron.new(command=_add_log_file(comm, name), comment=name)
+        job = _cron.new(command=add_log_file(comm, name), comment=name)
         job.setall(sched)
         _cron.write()
     else:
@@ -30,7 +23,7 @@ def update_cron_job(comm: Command, name: Name, sched: Schedule, old_name: Name) 
     match = _cron.find_comment(old_name)
     job = list(match)[0]
     job.setall(sched)
-    job.set_command(_add_log_file(comm, name))
+    job.set_command(add_log_file(comm, name))
     job.set_comment(name)
     _cron.write()
 

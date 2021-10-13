@@ -9,10 +9,10 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 # Features:
 
 - Adding, Updating, Deleting and running cron jobs is simple.
-- It automatically logs the output of your cron jobs.
+- It automatically logs the output of your cron jobs. This can be viewed in the WEB UI.
 - Displays when is the next scheduled run.
 - Validates if your schedule is a valid cron schedule.
-- Displays if your cron job is succesful or if it failed (experimental)
+- Displays if your cron job is succesful or if it failed *(experimental)*
 
 # Quickstart
 
@@ -28,13 +28,14 @@ uvicorn main:app
 ```
 # Notes
 - This installs the cron jobs using the current OS user.
-- You should use a unique command name. This is used in filtering the cron jobs.
+- You should use a **unique command name**. This is used in filtering the cron jobs.
 - The log files are installed in your home directory.
     - The filename of the stdout log is `name.log` where `name` is the command name that you choose in the UI, removing all spaces.
-    - The filename of the stderr log is `err_name.err`
-- To enable the `status` indicator, run the application using the `experimental status` branch. (i.e. before running `uvicorn main:app` run `git checkout experimental_status` or stop the server, then run the previous git command) The current implementation is quite simple, we have a `file_watcher` that checks if there are any contents in the stderr. If there are, it will display the status as failed. Once you're able to debug the issue, delete the stderr file again.
+    - The filename of the stderr log is `error_name.err`
+- The implementation for the status indicator is quite simple, we have a `watch_err_files` function that checks if there are any
+contents in  stderr log. If there are, it will display the status as failed.
+**Once you're able to debug the issue, delete the stderr file**
 
 # TODO:
 
 - Improve the UI. I'm not really good at HTML/CSS/JS. I mean, it is usable but it could be better.
-- Currently, adding incorrect cron schedule fails silently (in the UI but not in the API) so if you entered an invalid cron schedule, it will simply not add/update the job.

@@ -49,13 +49,19 @@ $(document).ready(function () {
                     "name": command_name,
                     "schedule": schedule
                 }),
+                statusCode: {
+                    404: function (responseObject, textStatus, jqXHR) {
+                        // No content found (404)
+                        // This code will be executed if the server returns a 404 response
+                        alert("Make sure the cron expression is valid.")
+                    },
+                },
                 dataType: 'json',
             });
-
         }
 
         $('.ui.modal').modal('hide');
-        alert("Job Created!. Please Reload")
+
     });
 
     $("#update").click(function () {
@@ -76,9 +82,15 @@ $(document).ready(function () {
                     "name": command_name,
                     "schedule": schedule
                 }),
+                statusCode: {
+                    500: function (responseObject, textStatus, jqXHR) {
+                        // No content found (404)
+                        // This code will be executed if the server returns a 404 response
+                        alert("Make sure the cron expression is valid.")
+                    },
+                },
                 dataType: 'json'
             });
-            alert("Job Updated")
 
         }
 
@@ -90,4 +102,5 @@ $(document).ready(function () {
             on: 'click',
             inline: true
         });
+
 });
