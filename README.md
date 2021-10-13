@@ -1,7 +1,8 @@
 # Python Crontab UI
+*Sponsored by: https://www.facebook.com/lacantinasueno/*
 ![](static/lcs.png)
 
-This project aims to simplify managing cron jobs. Common issues that we encounter cron are:
+This project aims to simplify managing cron jobs. Common issues that we encounter in cron are:
 
 - Jobs are failing silently.
 - Manually editing `crontab` is error prone.
@@ -13,6 +14,22 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 - Displays when is the next scheduled run.
 - Validates if your schedule is a valid cron schedule.
 - Displays if your cron job is succesful or if it failed *(experimental)*
+
+# Demo
+
+A full video tutorial can be found here:
+
+## Executing a succesful command
+
+![](readme_images/success.gif)
+
+## Updating a job and running a failed command
+
+![](readme_images/failed.gif)
+
+## *Scheduling a Jupyter Notebook*
+
+Refer to this video:
 
 # Quickstart
 
