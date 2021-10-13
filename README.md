@@ -1,13 +1,7 @@
 # Python Crontab UI
-
-![](https://img.shields.io/github/license/benjcabalona1029/python-crontab-ui?style=for-the-badge)
-
-*Sponsored by: https://www.facebook.com/lacantinasueno/*
-
 ![](static/lcs.png)
 
-
-This project aims to simplify managing cron jobs. Common issues that we encounter in cron are:
+This project aims to simplify managing cron jobs. Common issues that we encounter cron are:
 
 - Jobs are failing silently.
 - Manually editing `crontab` is error prone.
@@ -20,16 +14,6 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 - Validates if your schedule is a valid cron schedule.
 - Displays if your cron job is succesful or if it failed *(experimental)*
 
-# Demo
-
-## Executing a succesful command
-
-![](readme_images/success.gif)
-
-## Updating a job and running a failed command
-
-![](readme_images/failed.gif)
-
 # Quickstart
 
 Start the server by running the following commands.
@@ -40,8 +24,6 @@ cd python-crontab-ui-git
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-# moreutils is needed for a timestamp to be added in the logs
-sudo pip install moreutils
 uvicorn main:app
 ```
 # Notes
