@@ -34,6 +34,7 @@ Start the server by running the following commands.
 ```bash
 https://github.com/benjcabalona1029/python-crontab-ui.git
 cd python-crontab-ui-git
+mkdir logs
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
