@@ -41,7 +41,7 @@ pip install -r requirements.txt
 # moreutils is needed for a timestamp to be added in the logs
 sudo pip install moreutils
 uvicorn main:app
-```:wq:"
+```
 # Notes
 - This installs the cron jobs using the current OS user.
 - You should use a **unique command name**. This is used in filtering the cron jobs.
