@@ -1,13 +1,7 @@
 # Python Crontab UI
-
-![](https://img.shields.io/github/license/benjcabalona1029/python-crontab-ui?style=for-the-badge)
-
-*Sponsored by: https://www.facebook.com/lacantinasueno/*
-
 ![](static/lcs.png)
 
-
-This project aims to simplify managing cron jobs. Common issues that we encounter in cron are:
+This project aims to simplify managing cron jobs. Common issues that we encounter cron are:
 
 - Jobs are failing silently.
 - Manually editing `crontab` is error prone.
@@ -18,25 +12,35 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 - It automatically logs the output of your cron jobs. This can be viewed in the WEB UI.
 - Displays when is the next scheduled run.
 - Validates if your schedule is a valid cron schedule.
-- Displays if your cron job is succesful or if it failed *(experimental)*
+- Displays if your cron job is successful.
 
-# Demo
 
-## Executing a succesful command
+**NOTE:** The timestamp for the logs, and the status indicator requires that you use `zsh` instead of `bash`.
 
-![](readme_images/success.gif)
+## Screenshots
 
-## Updating a job and running a failed command
+![](readme_images/failed.png)
 
-![](readme_images/failed.gif)
+![](readme_images/log.png)
 
 # Quickstart
 
 Start the server by running the following commands.
 
+If you are not yet using `zsh`
+
 ```bash
-https://github.com/benjcabalona1029/python-crontab-ui.git
+sudo apt install zsh -y
+# Make sure to accept the prompt to use zsh as your default shell
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# moreutils is needed for a timestamp to be added in the logs
+sudo apt install moreutils
+```
+
+```bash
+git clone https://github.com/benjcabalona1029/python-crontab-ui.git
 cd python-crontab-ui-git
+mkdir logs
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -45,12 +49,11 @@ uvicorn main:app
 # Notes
 - This installs the cron jobs using the current OS user.
 - You should use a **unique command name**. This is used in filtering the cron jobs.
-- The log files are installed in your home directory.
-    - The filename of the stdout log is `name.log` where `name` is the command name that you choose in the UI, removing all spaces.
-    - The filename of the stderr log is `error_name.err`
-- The implementation for the status indicator is quite simple, we have a `watch_err_files` function that checks if there are any
-contents in  stderr log. If there are, it will display the status as failed.
-**Once you're able to debug the issue, delete the stderr file**
+- The log files are stored in the `logs` directory of this repository.
+  - They are automatically deleted, once the job is deleted. I'm not sure if this is a good or bad idea, but it can easily be
+updated by updating the `delete_cron_job` function in `cronservice`.
+- The implementation for the status indicator is quite simple, we check the last line of the log file for a specific job. If it contain the work
+*Failed* then the job will be tagged as failed.
 
 # TODO:
 
