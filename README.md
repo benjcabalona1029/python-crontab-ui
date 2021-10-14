@@ -19,9 +19,9 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 
 ## Screenshots
 
-![](readme_images/failed.png)
+![](readme_images/failed.PNG)
 
-![](readme_images/log.png)
+![](readme_images/log.PNG)
 
 # Quickstart
 
