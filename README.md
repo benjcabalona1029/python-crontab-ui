@@ -1,13 +1,7 @@
 # Python Crontab UI
-
-![](https://img.shields.io/github/license/benjcabalona1029/python-crontab-ui?style=for-the-badge)
-
-*Sponsored by: https://www.facebook.com/lacantinasueno/*
-
 ![](static/lcs.png)
 
-
-This project aims to simplify managing cron jobs. Common issues that we encounter in cron are:
+This project aims to simplify managing cron jobs. Common issues that we encounter cron are:
 
 - Jobs are failing silently.
 - Manually editing `crontab` is error prone.
@@ -19,6 +13,7 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 - Displays when is the next scheduled run.
 - Validates if your schedule is a valid cron schedule.
 - Displays if your cron job is successful.
+
 
 **NOTE:** The timestamp for the logs, and the status indicator requires that you use `zsh` instead of `bash`.
 

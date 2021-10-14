@@ -21,7 +21,7 @@ def load_logs(name: Name) -> str:
     filename = f"logs/{log_file_name}.log"
     try:
         with open(filename) as f:
-            return f.read()
+          return f.read()
     except FileNotFoundError:
         return "No log yet"
 
