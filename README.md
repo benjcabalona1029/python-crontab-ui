@@ -20,6 +20,7 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 - Validates if your schedule is a valid cron schedule.
 - Displays if your cron job is successful.
 
+**NOTE:** The timestamp for the logs, and the status indicator requires that you use `zsh` instead of `bash`.
 
 ## Screenshots
 
@@ -31,15 +32,23 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 
 Start the server by running the following commands.
 
+If you are not yet using `zsh`
+
 ```bash
-https://github.com/benjcabalona1029/python-crontab-ui.git
+sudo apt install zsh -y
+# Make sure to accept the prompt to use zsh as your default shell
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# moreutils is needed for a timestamp to be added in the logs
+sudo apt install moreutils
+```
+
+```bash
+git clone https://github.com/benjcabalona1029/python-crontab-ui.git
 cd python-crontab-ui-git
 mkdir logs
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-# moreutils is needed for a timestamp to be added in the logs
-sudo pip install moreutils
 uvicorn main:app
 ```
 # Notes
