@@ -39,7 +39,7 @@ sudo apt install moreutils
 
 ```bash
 git clone https://github.com/benjcabalona1029/python-crontab-ui.git
-cd python-crontab-ui-git
+cd python-crontab-ui
 mkdir logs
 python3 -m venv venv
 source venv/bin/activate
