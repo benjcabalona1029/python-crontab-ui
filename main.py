@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 import models
 import cronservice
 from models import Job
-from utils import watch_err_files, load_logs
+from utils import watch_status, load_logs
 from database import SessionLocal, engine, JobRequest
 
 app = FastAPI()
@@ -28,7 +28,7 @@ def update_displayed_schedule(db: Session = Depends(get_db)) -> None:
     jobs = db.query(Job).all()
     for job in jobs:
         job.next_run = cronservice.get_next_schedule(job.name)
-        job.status = watch_err_files(job.name)
+        job.status = watch_status(job.name)
 
 
 @app.get("/")
@@ -49,10 +49,7 @@ async def get_jobs(job_id: int, request: Request, db: Session = Depends(get_db))
 @app.get("/logs/{job_id}")
 async def get_logs(job_id: int, request: Request, db: Session = Depends(get_db)):
     job = db.query(Job).filter(Job.id == job_id)
-    update_log = {
-        "err_log": load_logs(job.first().name, status=False),
-        "log": load_logs(job.first().name, "log", status=False),
-    }
+    update_log = {"log": load_logs(job.first().name)}
     job.update(update_log)
     db.commit()
     output = {"request": request, "job": update_log}

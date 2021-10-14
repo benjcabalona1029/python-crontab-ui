@@ -1,0 +1,112 @@
+Oct 14 11:06:58 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+Oct 14 11:06:58 # Initialization code that may require console input (password prompts, [y/n]
+Oct 14 11:06:58 # confirmations, etc.) must go above this block; everything else may go below.
+Oct 14 11:06:58 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+Oct 14 11:06:58   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+Oct 14 11:06:58 fi
+Oct 14 11:06:58
+Oct 14 11:06:58 # If you come from bash you might have to change your $PATH.
+Oct 14 11:06:58 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+Oct 14 11:06:58
+Oct 14 11:06:58 # Path to your oh-my-zsh installation.
+Oct 14 11:06:58 export ZSH="/home/benjamin/.oh-my-zsh"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Set name of the theme to load --- if set to "random", it will
+Oct 14 11:06:58 # load a random theme each time oh-my-zsh is loaded, in which case,
+Oct 14 11:06:58 # to know which specific one was loaded, run: echo $RANDOM_THEME
+Oct 14 11:06:58 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+Oct 14 11:06:58 ZSH_THEME="powerlevel10k/powerlevel10k"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Set list of themes to pick from when loading at random
+Oct 14 11:06:58 # Setting this variable when ZSH_THEME=random will cause zsh to load
+Oct 14 11:06:58 # a theme from this variable instead of looking in $ZSH/themes/
+Oct 14 11:06:58 # If set to an empty array, this variable will have no effect.
+Oct 14 11:06:58 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line to use case-sensitive completion.
+Oct 14 11:06:58 # CASE_SENSITIVE="true"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line to use hyphen-insensitive completion.
+Oct 14 11:06:58 # Case-sensitive completion must be off. _ and - will be interchangeable.
+Oct 14 11:06:58 # HYPHEN_INSENSITIVE="true"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment one of the following lines to change the auto-update behavior
+Oct 14 11:06:58 # zstyle ':omz:update' mode disabled  # disable automatic updates
+Oct 14 11:06:58 # zstyle ':omz:update' mode auto      # update automatically without asking
+Oct 14 11:06:58 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line to change how often to auto-update (in days).
+Oct 14 11:06:58 # zstyle ':omz:update' frequency 13
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line if pasting URLs and other text is messed up.
+Oct 14 11:06:58 # DISABLE_MAGIC_FUNCTIONS="true"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line to disable colors in ls.
+Oct 14 11:06:58 # DISABLE_LS_COLORS="true"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line to disable auto-setting terminal title.
+Oct 14 11:06:58 # DISABLE_AUTO_TITLE="true"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line to enable command auto-correction.
+Oct 14 11:06:58 # ENABLE_CORRECTION="true"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line to display red dots whilst waiting for completion.
+Oct 14 11:06:58 # You can also set it to another string to have that shown instead of the default red dots.
+Oct 14 11:06:58 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+Oct 14 11:06:58 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+Oct 14 11:06:58 # COMPLETION_WAITING_DOTS="true"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line if you want to disable marking untracked files
+Oct 14 11:06:58 # under VCS as dirty. This makes repository status check for large repositories
+Oct 14 11:06:58 # much, much faster.
+Oct 14 11:06:58 # DISABLE_UNTRACKED_FILES_DIRTY="true"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Uncomment the following line if you want to change the command execution time
+Oct 14 11:06:58 # stamp shown in the history command output.
+Oct 14 11:06:58 # You can set one of the optional three formats:
+Oct 14 11:06:58 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+Oct 14 11:06:58 # or set a custom format using the strftime function format specifications,
+Oct 14 11:06:58 # see 'man strftime' for details.
+Oct 14 11:06:58 # HIST_STAMPS="mm/dd/yyyy"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Would you like to use another custom folder than $ZSH/custom?
+Oct 14 11:06:58 # ZSH_CUSTOM=/path/to/new-custom-folder
+Oct 14 11:06:58
+Oct 14 11:06:58 # Which plugins would you like to load?
+Oct 14 11:06:58 # Standard plugins can be found in $ZSH/plugins/
+Oct 14 11:06:58 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
+Oct 14 11:06:58 # Example format: plugins=(rails git textmate ruby lighthouse)
+Oct 14 11:06:58 # Add wisely, as too many plugins slow down shell startup.
+Oct 14 11:06:58 plugins=(zsh-autosuggestions)
+Oct 14 11:06:58
+Oct 14 11:06:58 source $ZSH/oh-my-zsh.sh
+Oct 14 11:06:58
+Oct 14 11:06:58 # User configuration
+Oct 14 11:06:58
+Oct 14 11:06:58 # export MANPATH="/usr/local/man:$MANPATH"
+Oct 14 11:06:58
+Oct 14 11:06:58 # You may need to manually set your language environment
+Oct 14 11:06:58 # export LANG=en_US.UTF-8
+Oct 14 11:06:58
+Oct 14 11:06:58 # Preferred editor for local and remote sessions
+Oct 14 11:06:58 # if [[ -n $SSH_CONNECTION ]]; then
+Oct 14 11:06:58 #   export EDITOR='vim'
+Oct 14 11:06:58 # else
+Oct 14 11:06:58 #   export EDITOR='mvim'
+Oct 14 11:06:58 # fi
+Oct 14 11:06:58
+Oct 14 11:06:58 # Compilation flags
+Oct 14 11:06:58 # export ARCHFLAGS="-arch x86_64"
+Oct 14 11:06:58
+Oct 14 11:06:58 # Set personal aliases, overriding those provided by oh-my-zsh libs,
+Oct 14 11:06:58 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
+Oct 14 11:06:58 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
+Oct 14 11:06:58 # For a full list of active aliases, run `alias`.
+Oct 14 11:06:58 #
+Oct 14 11:06:58 # Example aliases
+Oct 14 11:06:58 # alias zshconfig="mate ~/.zshrc"
+Oct 14 11:06:58 # alias ohmyzsh="mate ~/.oh-my-zsh"
+Oct 14 11:06:58 source /home/benjamin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+Oct 14 11:06:58
+Oct 14 11:06:58 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+Oct 14 11:06:58 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

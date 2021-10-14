@@ -18,17 +18,14 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 - It automatically logs the output of your cron jobs. This can be viewed in the WEB UI.
 - Displays when is the next scheduled run.
 - Validates if your schedule is a valid cron schedule.
-- Displays if your cron job is succesful or if it failed *(experimental)*
+- Displays if your cron job is successful.
 
-# Demo
 
-## Executing a succesful command
+## Screenshots
 
-![](readme_images/success.gif)
+![](readme_images/failed.png)
 
-## Updating a job and running a failed command
-
-![](readme_images/failed.gif)
+![](readme_images/log.png)
 
 # Quickstart
 
@@ -47,12 +44,11 @@ uvicorn main:app
 # Notes
 - This installs the cron jobs using the current OS user.
 - You should use a **unique command name**. This is used in filtering the cron jobs.
-- The log files are installed in your home directory.
-    - The filename of the stdout log is `name.log` where `name` is the command name that you choose in the UI, removing all spaces.
-    - The filename of the stderr log is `error_name.err`
-- The implementation for the status indicator is quite simple, we have a `watch_err_files` function that checks if there are any
-contents in  stderr log. If there are, it will display the status as failed.
-**Once you're able to debug the issue, delete the stderr file**
+- The log files are stored in the `logs` directory of this repository.
+  - They are automatically deleted, once the job is deleted. I'm not sure if this is a good or bad idea, but it can easily be
+updated by updating the `delete_cron_job` function in `cronservice`.
+- The implementation for the status indicator is quite simple, we check the last line of the log file for a specific job. If it contain the work
+*Failed* then the job will be tagged as failed.
 
 # TODO:
 

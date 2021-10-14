@@ -3,7 +3,7 @@ from croniter import croniter
 from datetime import datetime
 import getpass
 
-from utils import add_log_file, Command, Name, Schedule
+from utils import add_log_file, Command, Name, Schedule, delete_log_file
 
 _user = getpass.getuser()
 
@@ -31,13 +31,13 @@ def update_cron_job(comm: Command, name: Name, sched: Schedule, old_name: Name) 
 def delete_cron_job(name: Name) -> None:
     _cron.remove_all(comment=name)
     _cron.write()
+    delete_log_file(name)
 
 
 def run_manually(name: Name) -> None:
     match = _cron.find_comment(name)
     job = list(match)[0]
     job.run()
-    print(job, "executed")
 
 
 def get_next_schedule(name: Name) -> str:

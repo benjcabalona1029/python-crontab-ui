@@ -1,12 +1,7 @@
 {% extends "layout.html" %}
-
 {% block content %}
-
     <script type="module" src="{{ url_for('static', path='main.js') }}"></script>
     <h1>Log</h1>
     <pre><code>{{ job.log }}</code></pre>
-
-    <h1>Error Log</h1>
-    <pre><code>{{ job.err_log }}</code></pre>
     <br>
 {% endblock %}
