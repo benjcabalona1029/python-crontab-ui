@@ -12,6 +12,5 @@ class Job(Base):
     schedule = Column(String)
     next_run = Column(String, default=None)
     status = Column(String, default=None)
-    err_log = Column(String, default=None)
     log = Column(String, default=None)
     is_active = Column(Boolean, default=False)
