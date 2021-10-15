@@ -19,9 +19,9 @@ This project aims to simplify managing cron jobs. Common issues that we encounte
 
 ## Screenshots
 
-![](readme_images/failed.png)
+![](readme_images/failed.PNG)
 
-![](readme_images/log.png)
+![](readme_images/log.PNG)
 
 # Quickstart
 
@@ -39,7 +39,7 @@ sudo apt install moreutils
 
 ```bash
 git clone https://github.com/benjcabalona1029/python-crontab-ui.git
-cd python-crontab-ui-git
+cd python-crontab-ui
 mkdir logs
 python3 -m venv venv
 source venv/bin/activate
