@@ -50,7 +50,7 @@ $(document).ready(function () {
                     "schedule": schedule
                 }),
                 statusCode: {
-                    404: function (responseObject, textStatus, jqXHR) {
+                    404: function () {
                         // No content found (404)
                         // This code will be executed if the server returns a 404 response
                         alert("Make sure the cron expression is valid.")
@@ -83,7 +83,7 @@ $(document).ready(function () {
                     "schedule": schedule
                 }),
                 statusCode: {
-                    500: function (responseObject, textStatus, jqXHR) {
+                    500: function () {
                         // No content found (404)
                         // This code will be executed if the server returns a 404 response
                         alert("Make sure the cron expression is valid.")
