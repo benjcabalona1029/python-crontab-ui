@@ -41,7 +41,10 @@ def run_manually(name: Name) -> None:
 
 
 def get_next_schedule(name: Name) -> str:
-    match = _cron.find_comment(name)
-    job = list(match)[0]
-    schedule = job.schedule(date_from=datetime.now())
-    return schedule.get_next().strftime("%d/%m/%Y %H:%M:%S").replace("/", "-")
+    try:
+        match = _cron.find_comment(name)
+        job = list(match)[0]
+        schedule = job.schedule(date_from=datetime.now())
+        return schedule.get_next().strftime("%d/%m/%Y %H:%M:%S").replace("/", "-")
+    except IndexError:
+        return None
