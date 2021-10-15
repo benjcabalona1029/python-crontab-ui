@@ -11,9 +11,12 @@ def add_log_file(command: Command, name: Name) -> str:
 
 
 def delete_log_file(name: Name) -> None:
-    log_file_name = name.replace(" ", "")
-    file = pathlib.Path(f"logs/{log_file_name}.log")
-    file.unlink()
+    try:
+        log_file_name = name.replace(" ", "")
+        file = pathlib.Path(f"logs/{log_file_name}.log")
+        file.unlink()
+    except FileNotFoundError:
+        return None
 
 
 def load_logs(name: Name) -> str:
@@ -21,7 +24,7 @@ def load_logs(name: Name) -> str:
     filename = f"logs/{log_file_name}.log"
     try:
         with open(filename) as f:
-          return f.read()
+            return f.read()
     except FileNotFoundError:
         return "No log yet"
 
